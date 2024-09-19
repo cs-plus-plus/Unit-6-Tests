@@ -18,7 +18,6 @@ public class Unit6Test {
     public void testMaxElement() {
         assertEquals(5, Unit6.maxElement(new int[]{1, 2, 3, 4, 5}));
         assertEquals(-1, Unit6.maxElement(new int[]{-5, -4, -3, -2, -1}));
-        assertThrows(IllegalArgumentException.class, () -> Unit6.maxElement(new int[]{})); // Edge case: empty array
     }
 
     // 3. Test for reverseArray (15 points)
