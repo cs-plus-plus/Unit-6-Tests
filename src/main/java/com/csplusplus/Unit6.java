@@ -11,7 +11,6 @@ public class Unit6 {
 
     // 2. Implement a method that finds the maximum element in an array of integers.
     // Instructions: Iterate through the array and track the largest number found.
-    // Hint: Handle the case where the array is empty by throwing an IllegalArgumentException.
     public static int maxElement(int[] array) {
         // TODO: Implement this method
         return 0;  // Placeholder return value, replace with the correct maximum element.
