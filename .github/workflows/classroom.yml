@@ -1,0 +1,70 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: testSumArray
+      id: testsumarray
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testSumArray
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit6Test#testSumArray test
+        timeout: 3
+        max-score: 20
+    - name: testMaxElement
+      id: testmaxelement
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testMaxElement
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit6Test#testMaxElement test
+        timeout: 3
+        max-score: 20
+    - name: testReverseArray
+      id: testreversearray
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testReverseArray
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit6Test#testReverseArray test
+        timeout: 3
+        max-score: 15
+    - name: testIsSorted
+      id: testissorted
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testIsSorted
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit6Test#testIsSorted test
+        timeout: 3
+        max-score: 15
+    - name: testCountOccurrences
+      id: testcountoccurrences
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testCountOccurrences
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit6Test#testCountOccurrences test
+        timeout: 3
+        max-score: 30
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TESTSUMARRAY_RESULTS: "${{steps.testsumarray.outputs.result}}"
+        TESTMAXELEMENT_RESULTS: "${{steps.testmaxelement.outputs.result}}"
+        TESTREVERSEARRAY_RESULTS: "${{steps.testreversearray.outputs.result}}"
+        TESTISSORTED_RESULTS: "${{steps.testissorted.outputs.result}}"
+        TESTCOUNTOCCURRENCES_RESULTS: "${{steps.testcountoccurrences.outputs.result}}"
+      with:
+        runners: testsumarray,testmaxelement,testreversearray,testissorted,testcountoccurrences
