@@ -1,72 +1,97 @@
-# Unit 6 - Understanding Arrays in Java
+# Unit 6: Array
+
+AP Computer Science A
 
 ## Overview
-In this unit, students will learn about using arrays in Java, a fundamental concept for storing and manipulating collections of data. The focus will be on declaring arrays, accessing elements, traversing arrays with loops, and handling common array-related operations. This unit will help students understand how to work with sequential data structures, manage memory efficiently, and avoid common pitfalls associated with arrays.
 
-## Learning Objectives
-- Understand how to declare and initialize arrays in Java.
-- Access array elements using index values.
-- Traverse arrays using standard `for` loops and `for-each` loops.
-- Understand and implement array operations such as reversing arrays, summing elements, and finding the maximum value.
-- Handle edge cases such as empty arrays and array bounds.
-  
-## Key Concepts
-- **Array**: A fixed-size data structure that stores multiple elements of the same type.
-- **Array Declaration**: Defines an array’s type and name. Example: `int[] scores;`
-- **Array Initialization**: Defines the size or values of an array. Example: `scores = new int[5];` or `int[] scores = {99, 88, 77};`
-- **Array Length**: A field that stores the number of elements an array can hold. Access it using `array.length`.
-- **Element Access**: Retrieve or update an element in an array using its index. Example: `scores[0] = 100;`
-- **For-each Loop**: A loop that simplifies traversing arrays. Example: `for (int score : scores) {...}`
-- **Out of Bounds Exception**: Error encountered when trying to access an invalid index (e.g., `arr[arr.length]`).
-
-## Common Mistakes
-- Declaring an array without creating it (e.g., `int[] nums;` but forgetting `nums = new int[5];`).
-- Starting the array index at `1` instead of `0`.
-- Using `array.length` as the last index instead of `array.length - 1`.
-- Confusing `array.length()` with `array.length`.
-- Going out of bounds when looping through an array (e.g., using `<= array.length` instead of `< array.length`).
-- Exiting a loop prematurely, leading to incomplete processing of array elements.
-
-## Assignment
-Students are required to complete the `Unit6.java` class by implementing all the necessary methods related to arrays. They will demonstrate their understanding by ensuring that all provided JUnit tests in `Unit6Test.java` pass successfully.
-
-## JUnit Tests Description and Points
-
-1. **Test Sum of Array (20 points)**  
-   Verifies that the method correctly calculates the sum of all elements in an array.
-
-2. **Test Maximum Element (20 points)**  
-   Ensures the method finds the maximum element in an array and handles edge cases such as empty arrays.
-
-3. **Test Reverse Array (15 points)**  
-   Confirms that the method returns a new array with the elements in reverse order.
-
-4. **Test Array Sorting Check (15 points)**  
-   Verifies that the method correctly identifies whether an array is sorted in ascending order.
-
-5. **Test Element Occurrences (30 points)**  
-   Ensures that the method accurately counts how many times a given element appears in an array.
+This project covers **Unit 6: Array** concepts including array declaration, initialization, traversal with standard and for-each loops, and common array algorithms. Implement the 5 methods in `Unit6.java` and run the provided JUnit tests to verify your work.
 
 ## Getting Started
-1. Clone the repository containing the Unit 6 project.
-2. Open the project in your preferred IDE (such as IntelliJ IDEA or Eclipse).
-3. Navigate to `Unit6.java` and implement the required methods and attributes.
-4. Run the JUnit tests in `Unit6Test.java` to verify your implementations.
-5. Ensure all tests pass before submitting your code.
 
-## Submission
-Submit your completed `Unit6.java` file through the course's designated submission platform by the due date. Ensure that all tests pass and your code adheres to the style guidelines provided in class.
+### Option 1: GitHub Codespaces (Recommended)
 
-## Resources
-- [Java Documentation](https://docs.oracle.com/javase/8/docs/api/)
-- [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
-- [Java Arrays](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)
+1. Click the green **Code** button on this repository
+2. Select the **Codespaces** tab
+3. Click **Create codespace on main**
+4. Wait for the environment to build (~2 minutes the first time)
+5. Start coding in `src/main/java/com/csplusplus/Unit6.java`
 
-## Support
-If you encounter any issues or have questions about the assignment, please reach out during office hours or post in the course discussion forum.
+> **Note:** If the Java extension shows errors on first load, press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) and run **"Developer: Reload Window"**. This is a one-time setup step.
 
-For additional assistance, contact: **Kevin** at [kevin@csplusplus.com](mailto:kevin@csplusplus.com).
+### Option 2: Local Development
 
----
+1. Accept the assignment via the GitHub Classroom link
+2. Clone the repository using GitHub Desktop
+3. Open the project in your IDE (VS Code, IntelliJ, or Eclipse)
+4. **Requirements:** Java 17+, Maven 3.x
 
-**Unit 6 - Understanding Arrays in Java** is part of the AP Computer Science A course, aimed at building a strong foundation in data structures and array manipulation.
+## Running Tests
+
+### In VS Code / Codespaces
+
+Click the green play button next to any test method in `Unit6Test.java`, or open the **Testing** sidebar (beaker icon).
+
+### Command Line
+
+Run all tests:
+```
+mvn test
+```
+
+Run a single method's tests:
+```
+mvn -Dtest=Unit6Test#testSumArray test
+```
+
+## Scoring
+
+| # | Method | Points | Concepts |
+|---|--------|--------|----------|
+| 1 | `sumArray(int[])` | 20 | For-each loop, accumulator |
+| 2 | `maxElement(int[])` | 20 | Array traversal, tracking max |
+| 3 | `reverseArray(int[])` | 15 | New array creation, index mapping |
+| 4 | `isSorted(int[])` | 15 | Adjacent element comparison |
+| 5 | `countOccurrences(int[], int)` | 30 | For-each loop, counting pattern |
+| | **Total** | **100** | |
+
+## Method Details
+
+### 1. `sumArray(int[] array)` — 20 points
+Returns the sum of all elements in the array.
+- `sumArray({1, 2, 3, 4, 5})` → `15`
+- `sumArray({})` → `0`
+
+### 2. `maxElement(int[] array)` — 20 points
+Returns the largest element in the array.
+- `maxElement({1, 2, 3, 4, 5})` → `5`
+- `maxElement({-5, -4, -3, -2, -1})` → `-1`
+
+### 3. `reverseArray(int[] array)` — 15 points
+Returns a new array with elements in reverse order.
+- `reverseArray({1, 2, 3, 4, 5})` → `{5, 4, 3, 2, 1}`
+
+### 4. `isSorted(int[] array)` — 15 points
+Returns true if the array is in ascending order.
+- `isSorted({1, 2, 3})` → `true`
+- `isSorted({3, 1, 2})` → `false`
+
+### 5. `countOccurrences(int[] array, int number)` — 30 points
+Counts how many times a number appears in the array.
+- `countOccurrences({1, 2, 1, 3, 1}, 1)` → `3`
+
+## Common Mistakes
+
+- Using `array.length()` instead of `array.length` (arrays use a field, not a method)
+- Starting array index at 1 instead of 0
+- Using `<= array.length` instead of `< array.length` in loop conditions (causes ArrayIndexOutOfBoundsException)
+- Initializing max to 0 instead of the first element (fails with all-negative arrays)
+- Modifying the original array in `reverseArray` instead of creating a new one
+- Forgetting to handle empty arrays
+
+## Autograding
+
+Your code is automatically graded when you push to GitHub. Check the **Actions** tab to see your score. Each method is tested independently — you earn points for each method you complete correctly.
+
+## Contact
+
+For questions, contact [kevin@csplusplus.com](mailto:kevin@csplusplus.com)
